@@ -317,7 +317,7 @@ table tr {
 #wrapper:after {
   content: "";
   display: none;
-  height: 265px;
+  height: 40px;
 }
 .button {
   background: #303030;
