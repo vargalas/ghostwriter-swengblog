@@ -735,17 +735,31 @@ table {
     padding-top: 40px;
   }
 
+  /* Desktop lays this row out with floats, contained by overflow:auto on
+     .site-header. That containment is fragile under real mobile Safari
+     (async compositing, dynamic toolbar resize, font-swap timing) in ways a
+     static render never shows. Flexbox computes its own height directly, so
+     there's no containment step left to get wrong. Desktop is untouched. */
+  .site-title-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
   .site-title {
+    width: 100%;
     float: none;
     margin-bottom: 15px;
 
     a {
       float: none;
     }
+  }
 
-    + .button-square {
-      margin-left: 0;
-    }
+  .button-square {
+    float: none;
+    margin: 0 5px;
   }
 
   .site-nav-item {
