@@ -223,6 +223,24 @@ table {
   }
 }
 
+/* The negative-margin sticky-footer trick above depends on the header's
+   rendered height staying predictable. On mobile the nav switches to one
+   item per line (see .site-nav-item below) and text metrics vary more
+   (system-font fallback, Dynamic Type), so the header's real height can
+   drift from what the fixed margin assumes - pulling page content up
+   underneath it. Disable the trick on mobile entirely: the footer just
+   sits after the content instead of sticking to the viewport bottom,
+   which is a fine trade for never overlapping. Desktop is untouched. */
+@media only screen and (max-width: 600px) {
+  #wrapper {
+    margin-bottom: 0;
+
+    &:after {
+      display: none;
+    }
+  }
+}
+
 .button {
   background: $secondary;
   border: none;
